@@ -22,10 +22,6 @@ class third extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
-// ignore: camel_case_types
-// ignore: must_be_immutable
-// ignore: camel_case_types
 class fullinfo extends StatelessWidget {
     final List<Movie> movies; 
   final int index;

@@ -7,8 +7,10 @@ import 'third.dart';
 
 // ignore: must_be_immutable
 class Home extends StatelessWidget {
-    final List<Movie> movies; 
-    Home({required this.movies});
+    final List<Movie> top_rated; 
+    final List<Movie> popular; 
+    final List<Movie> now_playing; 
+    Home({required this.now_playing, required this.top_rated, required this.popular});
 
     @override
   Widget build(BuildContext context) {
@@ -56,7 +58,7 @@ class Home extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SecondScreen(movies: movies)));
+                                  builder: (context) => SecondScreen(movies: top_rated)));
                         },
                         child: const Text(
                           'View All',
@@ -76,9 +78,9 @@ class Home extends StatelessWidget {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => third(index: index, movies: movies,)));
+                                      builder: (context) => third(index: index, movies: now_playing,)));
                             },
-                            child: ListItem(index,movies));
+                            child: ListItem(index,now_playing));
                       },
                       shrinkWrap: true,
                       separatorBuilder: (context, index) {
@@ -87,7 +89,7 @@ class Home extends StatelessWidget {
                           height: 15,
                         );
                       },
-                      itemCount: movies.length,
+                      itemCount: now_playing.length,
                     ),
                   ),
                 ],
@@ -111,7 +113,7 @@ class Home extends StatelessWidget {
                           Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => SecondScreen(movies: movies)));
+                                  builder: (context) => SecondScreen(movies: top_rated)));
                         },
                         child: const Text(
                           'View All',
@@ -132,16 +134,16 @@ class Home extends StatelessWidget {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => third(index: index, movies: movies,)));
+                                        builder: (context) => third(index: index, movies: popular)));
                               },
-                              child: Popular(index,movies));
+                              child: Popular(index,popular));
                         },
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return Padding(
                               padding: const EdgeInsetsDirectional.only(start: 15.0));
                         },
-                        itemCount: movies.length,
+                        itemCount: popular.length,
                       ),
                     ),
                   ),
